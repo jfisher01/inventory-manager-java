@@ -1,82 +1,82 @@
 package inventroyManager;
 
+import java.util.Scanner;
+
 /**
- * BookItem class extends Items class, implements Item Interface and represents book items
+ *BookItem class extends Items class, implements Item Interface and represents book items
  * 
- * @author Johnfisher Uchem
- * @version 1.0 / 12/15/2023
- * @since Java Inventory Management System 1.0
+ *
  */
 public class BookItem extends Items implements Item 
 {
 
 	private String author;
 	
+	Scanner keyboardInput = new Scanner(System.in);
 	/**
-	 * Non-parametric constructor for BookItem class
+	 * Non-parameterized constructor for BookItem class
 	 */
 	public BookItem()
 	{
 		super();
 	}
-	
-	
+		
 	/**
 	 * Parametric constructor for BookItem class
 	 * @param id
-	 * @param name
-	 * @param quantity
-	 * @param price
-	 * @param category
-	 * @param author
+	 * @param name the id of book item
+	 * @param quantity the quantity of book items
+	 * @param price the price of book item
+	 * @param category the category of item
+	 * @param author the author of book items
 	 */
 	public BookItem(String id, String name, int quantity, double price, String category, String author) 
 	{
 		super(id, name, quantity, price, category);
 		this.author = author;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
-	 * Sets the book's id 
-	 * @param id the id parameter in setId method
+	 * @param id the id of book item
 	 */
+	@Override
 	public void setId(String id) 
 	{
 		this.id = id;
 	}
 
 	/**
-	 * Sets the book's name
-	 * @param name the name parameter in the setName method
+	 * @param name the name of the book item
 	 */
+	@Override
 	public void setName(String name) 
 	{
 		this.name = name;
 	}
 
 	/**
-	 * Sets the book's quantity 
-	 * @param quantity the quantity parameter in the setQuantity method
+	 * @param quantity the quantity of book items
 	 */
+	@Override
 	public void setQuantity(int quantity) 
 	{
 		this.quantity = quantity;
 	}
 
 	/** 
-	 * Sets the book's price
-	 * @param price the price parameter in the setPrice method
+	 * @param price the price of the book item
 	 */
+	@Override
 	public void setPrice(double price) 
 	{
 		this.price = price;
 	}
 
 	/**
-	 * Sets the book's category
-	 * @param category the category parameter in setCatogory method
+	 * @param category the category of the book item
 	 */
+	@Override
 	public void setCategory(String category) 
 	{
 		this.category = category;
@@ -85,8 +85,7 @@ public class BookItem extends Items implements Item
 	
 	
 	/**
-	 * Gets the book's author
-	 * @return the author, getAuthor method
+	 * @return the author of the book item
 	 */
 	public String getAuthor() 
 	{ 
@@ -95,8 +94,7 @@ public class BookItem extends Items implements Item
 
 
 	/**
-	 * Sets the book's author
-	 * @param author the author parameter in the setAuthor method
+	 * @param author the author of the book item
 	 */
 	public void setAuthor(String author) 
 	{
@@ -105,30 +103,26 @@ public class BookItem extends Items implements Item
 
 
 	/**
-	 * Gets the book's id
-	 * @return Id, getId method
+	 * @return the id of the book item
 	 */
 	@Override
 	public String getId() 
 	{
-		// TODO Auto-generated method stub
+		
 		return id;
 	}
 	
 	/**
-	 * Gets the book's name
-	 * @return name, getName method
+	 * @return name the name of the book item
 	 */
 	@Override
 	public String getName() 
 	{
-		// TODO Auto-generated method stub
 		return name;
 	}
 	
 	/**
-	 * Gets the book's quantity
-	 * @return quantity, getQuantity method
+	 * @return the quantity of the book items
 	 */
 	@Override
 	public int getQuantity() 
@@ -142,13 +136,12 @@ public class BookItem extends Items implements Item
 		{
 			 return quantity;
 		}
-		// TODO Auto-generated method stub
+	
 		
 	}
 	
 	/**
-	 * Gets the book's price
-	 * @return price, getPrice method
+	 * @return the price of the book item
 	 */
 	@Override
 	public double getPrice() 
@@ -162,32 +155,74 @@ public class BookItem extends Items implements Item
 		{
 			 return price;
 		}
-		// TODO Auto-generated method stub
+	
 		
 	}
 	
 	
 	/**
-	 * Gets the book's category
-	 * @return category, getCategory method
+	 * @return the category of the book item
 	 */
 	@Override
 	public String getCategory() 
 	{
-		// TODO Auto-generated method stub
+		
 		return category;
 	}
 	
 	/**
-	 * Returns toString values of the constructor of BookItem class
-	 * @return values from toString method
+	 * 
+	 * @return new Book item with the information the user entered
+	 */
+	public BookItem enterBookItem() {
+		
+		System.out.println("We need the information for book items\n");	
+			try {
+					
+					System.out.println("Enter book's Id: ");
+					id = keyboardInput.nextLine();
+
+					System.out.println("Enter book's name: ");
+					name = keyboardInput.nextLine();
+
+					System.out.println("Enter book's quantity: ");
+					quantity = keyboardInput.nextInt();
+
+					System.out.println("Enter book's price: ");
+					price = keyboardInput.nextDouble();
+
+					keyboardInput.nextLine();
+					System.out.print("Enter book's category: \n");
+					category = keyboardInput.nextLine();
+					
+					System.out.print("Enter book's author: ");
+					author = keyboardInput.nextLine();
+
+					 new BookItem(id, name, quantity, price, category, author);
+
+					// Adds new item to inventory
+					InventoryManager.addItem(new BookItem(id, name, quantity, price, category, author));
+				
+				} 
+				catch (Exception e) 
+				{
+					// TODO Auto-generated catch block
+					System.out.println("Input mismatch!");
+					System.exit(0);
+				}
+				return new BookItem(id, name, quantity, price, category, author);
+			}
+	
+	
+	/**
+	 * @return id, name, quantity, price, category and author of the book items
 	 */
 	@Override
 	public String toString() 
 	{
 			
 		return ("BOOK ITEMS :\n" + "ID: " + id + "\nName: " + name + "\nQuantity: " + quantity + "\nPrice: " + fdollar.format(price)
-				+ "\nCategory: " + category + "\nAuthor: " + author + "\n");
+				+ "\nCategory: " + category + "\nAuthor: " + author + "\n\n");
 	}
 
 }
