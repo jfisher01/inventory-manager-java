@@ -171,15 +171,26 @@ public class InventoryManager {
 
 		for (Items anyItem : items) {
 			
-			if ((anyItem instanceof BookItem || anyItem instanceof ElectronicItem || anyItem instanceof GroceryItem)) {
-				 anyItem.getId().equals(Itemid);
+			if (anyItem.getId().equals(Itemid) && anyItem instanceof BookItem) {
 				items.remove(anyItem);
 				
 				System.out.println(anyItem.getClass().getSimpleName() + " was removed successfully!\n");
 				
 				break; 	
 			} 
+			else if (anyItem.getId().equals(Itemid) && anyItem instanceof ElectronicItem) {
+				     items.remove(anyItem);	
+				
+				System.out.println(anyItem.getClass().getSimpleName() + " was removed successfully!\n");
+				break;
+			}
 			
+			else if (anyItem.getId().equals(Itemid) && anyItem instanceof GroceryItem) {
+				items.remove(anyItem);
+				
+				System.out.println(anyItem.getClass().getSimpleName() + " was removed successfully!\n");
+				break;
+			}
 			else {
 				System.out.println("Item not found!");
 
@@ -196,7 +207,7 @@ public class InventoryManager {
 		
 		items.clear();
 		
-		System.out.println("Item is removed successfully");
+		System.out.println("All Item are removed successfully");
 
 		System.out.println(items);
 	}
