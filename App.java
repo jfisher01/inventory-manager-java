@@ -1,14 +1,14 @@
 package inventroyManager;
 /**
- * This App class contains the main method and provides interactive console user-interface for this application.
- * Project's name is: Java Inventory Management System.  
- * The application uses CRUD - Create New, Read, Update and Delete operations - to 
- * create New Items like books,groceries and electronics. This application also 
- * views, updates, deletes items, creates inventory log file, and saves items in log file. 
- * It also reads Book, Grocery and Electronic Items from log file
+ * This Java Inventory Management System project uses CRUD to perform several inventory management operations. 
+ * The CRUD operations include Create New, Read, Update and Delete operations. 
+ * It creates New Items like books,groceries and electronics items and store them in the inventory. 
+ * The menu includes views items, updates items, deletes items, creates inventory log file, 
+ * saves items in log file etc. 
+ * The application also reads Book, Grocery and Electronic Items from log file
  * 
  * @author Johnfisher Uchem
- * @version 1.0 / 12/15/2023
+ * @version 1.1 / 6/13/2024
  * @since Java Inventory Management System 1.0
  */
 
@@ -16,13 +16,13 @@ public class App
 {
 	/**
 	 * Main method for this application
-	 * @param args
+	 * @param args the string array's name for the non-return main method
 	 */
 	public static void main (String [] args)
 	{
 		
 		//LAUNCH APP
-		 new CLIInterface().userChoiseMenu();
+		new CLIInterface().userChoiseMenu();
 		
 	}
 
