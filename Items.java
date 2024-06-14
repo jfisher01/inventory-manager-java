@@ -8,13 +8,8 @@ import java.text.NumberFormat;
 /**
  * Items class implements Item Interface, represents concrete and base class 
  * for GroceryItem, BookItem and ElectronicItem classes
- * 
- * @author Johnfisher Uchem
- * @version 1.0 / 12/15/2023
- * @since Java Inventory Management System 1.0
- *
  */ 
-public class Items implements Item  //Concrete class for re-use of instance variables in other three derived classes
+public class Items implements Item  
 {
 	//Currency formatter used in this project
 	NumberFormat fdollar = NumberFormat.getCurrencyInstance();
@@ -26,7 +21,7 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	protected String category;
 	
 	/**
-	 * Non-parametric constructor for Items class
+	 * Non-parameterized constructor for Items class
 	 */
 	public Items()
 	{
@@ -34,12 +29,12 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * parametric constructor for Items class
-	 * @param id
-	 * @param name
-	 * @param quantity
-	 * @param price
-	 * @param category
+	 * parameterized constructor for Items class
+	 * @param id the id of the items the user will input
+	 * @param name the name of the items the user will input
+	 * @param quantity the quantity of items the user will input
+	 * @param price the price of the items the user will input
+	 * @param category the category of the items the user will input
 	 */
 	public Items(String id, String name, int quantity, double price, String category) 
 	{
@@ -52,8 +47,7 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	
 	
 	/**
-	 * Gets id for items
-	 * @return the id from getId method
+	 * @return the id of the item
 	 */
 	@Override
 	public String getId() 
@@ -62,8 +56,8 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * Sets id for Items
-	 * @param id, the id in the setId method's parameter
+	 * 
+	 * @param id, the id of the item 
 	 */
 	public void setId(String id) 
 	{
@@ -71,8 +65,8 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * Gets name for items
-	 * @return the name from getName method
+	 * 
+	 * @return the name of the item 
 	 */
 	@Override
 	public String getName() 
@@ -81,8 +75,7 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * Sets item's name
-	 * @param name,sets name for setName method
+	 * @param name the name of the item
 	 */
 	public void setName(String name) 
 	{
@@ -90,8 +83,8 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * Gets quantity of Items
-	 * @return the quantity from the getQuantity method
+	 * 
+	 * @return the quantity of items
 	 */
 	@Override
 	public int getQuantity() 
@@ -100,8 +93,8 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * Sets quantity for the Items
-	 * @param quantity the quantity in the setQuantity method's parameter
+	 * 
+	 * @param quantity the quantity of items
 	 */
 	public void setQuantity(int quantity) 
 	{
@@ -110,8 +103,8 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	
 	
 	/**
-	 * Gets price of the Items
-	 * @return the price
+	 *
+	 * @return price the price of items.
 	 */
 	@Override
 	public double getPrice() 
@@ -121,8 +114,8 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	
 	
 	/**
-	 * Sets price for Items
-	 * @param price the price in the setPrice method's parameter
+	 *
+	 * @param price the price of the item
 	 */
 	public void setPrice(double price) 
 	{
@@ -130,8 +123,7 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * Gets category for Items
-	 * @return the category
+	 * @return the category of the items
 	 */
 	@Override
 	public String getCategory() 
@@ -140,8 +132,8 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	}
 	
 	/**
-	 * Sets category for Items
-	 * @param category the category in the setCategory method'sparameter
+	 * 
+	 * @param category the category of the items
 	 */
 	public void setCategory(String category) 
 	{
@@ -150,7 +142,7 @@ public class Items implements Item  //Concrete class for re-use of instance vari
 	
 	/**
 	 * 
-	 * @return values from toString method
+	 * @return the id, name, quantity, price and category of the items 
 	 */
 	public String toString() 
 	{
