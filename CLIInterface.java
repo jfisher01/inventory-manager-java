@@ -5,12 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Client interface class provides operation interface for the entire application and 
- * extends InventoryManager class
- * @author Johnfisher Uchem
- * @version 1.0 / 12/15/2023
- * @since Java Inventory Management System 1.0
- *
+ * This class organized operations on more visual and readable interface for the entire application
  */
 public class CLIInterface extends InventoryManager
 {
@@ -18,7 +13,7 @@ public class CLIInterface extends InventoryManager
 	Scanner keyboardInput = new Scanner(System.in);
 	
 	/**
-	 * Non-parametric constructor for CLIInterface class
+	 * Non-parameterized constructor for CLIInterface class
 	 */
 	public CLIInterface() 
 	{
@@ -28,25 +23,23 @@ public class CLIInterface extends InventoryManager
 	
 	/**
 	 * Parametric constructor for CLIInterface class
-	 * @param items
-	 * @param inventoryFile
-	 * @param fileName
+	 * @param inventoryFile the inventoryFile that user enters list of items 
+	 * @param fileName the name of the file that contains user's items entry logs
 	 */
-	public CLIInterface(ArrayList<Items> items, File inventoryFile, String fileName) 
+	public CLIInterface( String fileName, File inventoryFile) 
 	{
-		super(items, inventoryFile, fileName);
-		// TODO Auto-generated constructor stub
+		super( );
+		
 	}
 	
 	
 	/**
-	 * shows menu for CRUD - Create New, Read, Update and Delete operations 
-	 * showMeny void method
+	 * @see void method showMenu()
 	 */
 	public void showMenu()
 	{
 	String appMenu = "1. Add new item\n" + "2. View items\n" + "3. Update item\n" 
-	                  + "4. Delete item\n" + "5. Save inventory log\n" + "6. Exit";
+	                  + "4. Delete item\n" + "5. Save inventory log\n" + "6. Delete all items\n" + "7. To Exit";
 	
 	System.out.println("\nWELCOME TO THE JAVA INVENTORY MANAGEMENT SYSTEM!\n" + 
 						"..................................................." + 
@@ -56,28 +49,29 @@ public class CLIInterface extends InventoryManager
 	}
 	
 	
-	
 	/**
-	 * Provides method calls for CRUD operations
-	 * userChoiceMenu void method
+	 * @see void method userChoiseMenu()
 	 */
 	public void userChoiseMenu()
 	{
 		InventoryManager anyItem = new InventoryManager();
-		
-			int userChoice =1;
+			
+			int userChoice =0;
+			
+			String confirm = "";
 	
 		do {
 			showMenu();
-			userChoice++;
+			//userChoice++;
 		
 		try {
 			 userChoice = keyboardInput.nextInt();
 			
 			switch(userChoice)
 			{
-			case 1 ://Add new items
-					anyItem.addNewItem();
+			case 1 ://Add new items to inventory
+				   addNewItem();
+				
 					break;
 					
 			case 2: //View inventory items or inventory log
@@ -99,21 +93,61 @@ public class CLIInterface extends InventoryManager
 					break;
 					
 			case 3: //Update item
-					anyItem.updateItem();
-					break;
+				System.out.println("Please enter : " + "1 for book item\n" + "2 for electronic ite\n" + "3. for grocery item");
+				int choice = keyboardInput.nextInt();
 				
-			case 4: //delete item
-					//anyItem.clear(); to clear all items in the inventory
-					//The above function was not included in the menu to keep things simple
-					anyItem.remove();
+				if(choice == 1) {
+					setBookItemId();
+				}
+				else if(choice == 2) {
+					setElectronicItemId();
+				}
+				else if (choice == 3) {
+					setGroceryItemId();
+				}
+				else {
+					System.out.println("Invalid entry!");
+				}
+			  
+				break;
+				
+			case 4: //delete an items
+				System.out.println("Are you sure you want to delete this items? ");
+				
+				System.out.println("Enter y to delete this item or n to quit");	
+				
+				 confirm = keyboardInput.next() ;
+				
+				if(confirm.equalsIgnoreCase("y")) {
+					InventoryManager.remove();
+				}
+				else {
+					break;
+				}		
 					break;
 						
 			case 5: //Save item(s) to inventory log file
 					anyItem.saveInventoryLog(anyItem.getFileName());
 					break;
 					
+			case 6: //Clears all items in the inventory
+				System.out.println("Are you sure you want to delete all items? ");
+				
+				System.out.println("Enter y to delete all items or n to quit");	
+				
+				 confirm = keyboardInput.next() ;
+				
+				if(confirm.equalsIgnoreCase("y")) {
+					anyItem.clear();
+				}
+				else {
+					break;
+				}
+				
+				break;
+					
 			default ://Default 
-					//System.out.println("Wrong input!"); Just left default blank
+					System.out.println("Wrong input!"); 
 					break;
 			
 			}			
@@ -127,7 +161,7 @@ public class CLIInterface extends InventoryManager
 		
 		}
 		
-	}while(userChoice > 0 && userChoice < 6 );
+	}while(userChoice > 0 && userChoice < 7 );
 		System.out.println("Thank you for using JIMS. Goodbye!");
 	
 }
