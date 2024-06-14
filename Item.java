@@ -1,10 +1,8 @@
 package inventroyManager;
 /**
- * This Provides interface for Items class
+ * This class Provides interface for Items class
  * 
- * @author Johnfisher Uchem
- * @version 1.0 / 12/15/2023
- * @since Java Inventory Management System 1.0
+ *
  *
  */
 public interface Item 
