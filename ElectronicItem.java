@@ -1,19 +1,19 @@
 package inventroyManager;
-
+import java.util.Scanner;
 /**
- * ElectronicItem class extends Items class, implements Item Interface and represents electronic items.
+ * ElectrnonicItem class extends Items class, implements Item Interface and represents electronics items
  * 
- * @author Johnfisher Uchem
- * @version 1.0 / 12/15/2023
- * @since Java Inventory Management System 1.0
+ *
  */
 public class ElectronicItem extends Items implements Item 
 {
 	
 	private String brandName ;
 	
+	Scanner keyboardInput = new Scanner(System.in);
+	
 	/**
-	 * Non-parametric constructor for this class
+	 * Non-parameterized constructor for electronic items class
 	 */
 	public ElectronicItem()
 	{
@@ -22,63 +22,63 @@ public class ElectronicItem extends Items implements Item
 	
 
 	/**
-	 * Parametric constructor for this class
-	 * @param id
-	 * @param name
-	 * @param quantity
-	 * @param price
-	 * @param category
-	 * @param brandName
+	 * Parameterized constructor for electronic items class
+	 * @param id the id of the electronic items
+	 * @param name the name of the electronic items
+	 * @param quantity the quantity of the electronic items
+	 * @param price the price of the electronic items
+	 * @param category the category of the electronic items
+	 * @param brandName the brand name of the electronic items
 	 */
 	public ElectronicItem(String id, String name, int quantity, double price, String category, String brandName) 
 	{
 		super(id, name, quantity, price, category);
 		this.brandName = brandName;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
 
 	/**
-	 * Sets the electronic's id
-	 * @param id the id in setId method's parameter
+	 * @param id the id of the electronic items
 	 */
+	@Override
 	public void setId(String id) 
 	{
 		this.id = id;
 	}
 
 	/**
-	 * Sets the electronic's name
-	 * @param name the name in setName setName method's parameter
+	 * @param name the name of the electronic items
 	 */
+	@Override
 	public void setName(String name) 
 	{
 		this.name = name;
 	}
 
 	/**
-	 * Sets the eletronic's quantity
-	 * @param quantity the quantity in the setQuantity method's parameter
+	 * @param quantity the quantity of the electronic items
 	 */
+	@Override
 	public void setQuantity(int quantity) 
 	{
 		this.quantity = quantity;
 	}
 
 	/**
-	 * Sets the electronic's price
-	 * @param price the price in the setPrice method's parameter
+	 * @param price the price of the electronic items
 	 */
+	@Override
 	public void setPrice(double price) 
 	{
 		this.price = price;
 	}
 
 	/**
-	 * Sets the eletronic's category
-	 * @param category the category in the setCategory method's parameter
+	 * @param category the category of the electronic items
 	 */
+	@Override
 	public void setCategory(String category) 
 	{
 		this.category = category;
@@ -87,8 +87,7 @@ public class ElectronicItem extends Items implements Item
 	
 
 	/**
-	 * Gets the brand name
-	 * @return the brandName
+	 * @return the brandName of the electronic items
 	 */
 	public String getBrandName() 
 	{
@@ -97,8 +96,7 @@ public class ElectronicItem extends Items implements Item
 
 
 	/**
-	 * Sets the brand name
-	 * @param brandName the brandName in the setBrandName method's parameter
+	 * @param brandName the brandName of the electronic items
 	 */
 	public void setBrandName(String brandName) 
 	{
@@ -108,8 +106,7 @@ public class ElectronicItem extends Items implements Item
 
 
 	/**
-	 * Gets the eletronic's Id
-	 * @return Id, getId method
+	 * @return the id of the electronic items
 	 */
 	@Override
 	public String getId() 
@@ -119,8 +116,7 @@ public class ElectronicItem extends Items implements Item
 	}
 
 	/**
-	 * Gets the electronic's name
-	 * @return name, getName method
+	 * @return the name of the electronic items
 	 */
 	@Override
 	public String getName() 
@@ -131,8 +127,7 @@ public class ElectronicItem extends Items implements Item
     
 	
 	/**
-	 * Gets the electronic's quantity
-	 * @return quantity, getQuantity method
+	 * @return the quantity of electronic items
 	 */
 	@Override
 	public int getQuantity() 
@@ -150,8 +145,7 @@ public class ElectronicItem extends Items implements Item
 	}
 
 	/**
-	 * Gets the eletronic's price
-	 * @return price, getPrice method
+	 * @return the price of the electronic item
 	 */
 	@Override
 	public double getPrice() 
@@ -166,30 +160,74 @@ public class ElectronicItem extends Items implements Item
 		{
 			 return price;
 		}
-		// TODO Auto-generated method stub	
+	
 	}
 
 	/**
-	 * Gets the electronic's category
-	 * @return category, getCategory method
+	 * @return the category of the electronic items
 	 */
 	@Override
 	public String getCategory() 
 	{
-		// TODO Auto-generated method stub
-		return category;
+			return category;
 	}
 	
 	/**
-	 * Returns the toString values of the electronic item
-	 * toString void method
+	 * 
+	 *@return the electronic item's object
+	 */
+	public ElectronicItem enterElectronicItem() {
+		
+		
+		System.out.println("We need information for the electronic items\n");	
+		try {
+					
+			System.out.println("Enter the electronic items Id: ");
+			id = keyboardInput.nextLine();
+
+			System.out.println("Enter the electronic items name: ");
+			name = keyboardInput.nextLine();
+
+			System.out.println("Enter the electronic items quantity: ");
+			quantity = keyboardInput.nextInt();
+
+			System.out.println("Enter  the electronic items price: ");
+			price = keyboardInput.nextDouble();
+			
+			keyboardInput.nextLine();
+			System.out.print("Enter  the electronic items category: ");
+			category = keyboardInput.nextLine();
+
+			System.out.print("Enter  the electronic items brand: ");
+			brandName = keyboardInput.nextLine();
+			
+			new ElectronicItem(id, name, quantity, price, category, brandName);
+
+			// Adds new item to inventory
+			InventoryManager.addItem(new ElectronicItem(id, name, quantity, price, category, brandName));
+			
+			} 
+		catch (Exception e) 
+			{
+			// TODO Auto-generated catch block
+			System.out.println("Input mismatch!");
+			System.exit(0);
+			}
+			return new ElectronicItem(id, name, quantity, price, category, brandName);
+
+			}
+	
+	
+	/**
+
+	 * @return the id, name, quantity, price, category and brand name of the electronic item
 	 */
 	@Override
 	public String toString() 
 	{
 		
 		return ("ELECTRONIC ITEMS :\n" + "ID: " + id + "\nName: " + name + "\nQuantity: " + quantity + "\nPrice: " + fdollar.format(price)
-				+ "\nCategory: " + category + "\nBrand Name: " + brandName + "\n");
+				+ "\nCategory: " + category + "\nBrand Name: " + brandName + "\n\n");
 	}
 	
 }
